@@ -113,6 +113,7 @@ def find_networks(network_list):
                 found_networks.append(network_option)
     return found_networks
 
+# find games in which given team is playing
 def find_games_given_team(team):
     team_games = {}
     count = 0
@@ -125,6 +126,7 @@ def find_games_given_team(team):
             count += 1
     return team_games
 
+# find all games scheduled for today
 def find_todays_games():
     todays_games = {}
     todays_date = time.strftime("%a, %B %-d")
@@ -137,9 +139,11 @@ def find_todays_games():
             count += 1
     return todays_games
 
+# pretty print
 def print_json(games):
     print json.dumps(games, sort_keys=True, indent=4, separators=(',', ': '), ensure_ascii=False)
 
+# build result statement
 def build_output(game):
     teams = game["teams"]
     time = game["time"]
@@ -147,6 +151,7 @@ def build_output(game):
     output = "%s plays %s tonight at %s on %s" % (teams[0], teams[1], time, network)
     print output
 
+# find official team name given a nickname
 def find_team_given_nickname(nickname):
     found_team = ""
     # for all teams
@@ -157,6 +162,7 @@ def find_team_given_nickname(nickname):
             break
     return team
 
+# Figure out what the user is asking
 def parse_input(input):
     # Test - what channel does Cleveland play on tonight?
     # look for "what channel"
